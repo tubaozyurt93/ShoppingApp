@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { GETALLITEMS, filteredList } from '../redux/actions/action';
 
 
-function ListGroups({ filterItems }) {
+function ListGroups({ items, setItems, filterItems, filterList }) {
     const onClick = (type) => {
         filterItems(type)
         console.log(type);

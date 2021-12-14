@@ -5,10 +5,7 @@ function MyPage({ data }) {
     return (
         <div>
             <Card style={{ width: '18rem', height: '18rem', margin: "auto"}}>
-
-
-
-                <Card.Img
+           <Card.Img
                     variant="top"
                     className='card-image'
                     src={data.image}

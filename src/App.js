@@ -26,14 +26,14 @@ function App({ items, setItems, filterItems, filterList }) {
 
         <Col xs={3} md={4} lg={8} className="mb-5 card-column"    >
           <CardGroup>
-            {filterList && filterList.length > 0 ? filterList.map(data=> {
+            {filterList && filterList.length > 0 ? filterList.map((items,index)=> {
               return (
-                <MyPage data={data} />
+                <MyPage key={index} data={items} />
               )
             }) :
               <>
-                {items && items.map(data =>
-                  <MyPage data={data} />
+                {items && items.map((data,index) =>
+                  <MyPage key={index} data={data} />
                 )}
               </>
             }
