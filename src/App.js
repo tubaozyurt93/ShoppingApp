@@ -1,11 +1,13 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { GETALLITEMS, filteredList } from './redux/actions/action';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Card, Button, CardGroup, Container, Row, Col, Link, ListGroup } from 'react-bootstrap';
+import { Card, Button, CardGroup, Container, Row, Col, Link, ListGroup, Navbar } from 'react-bootstrap';
 import { useEffect } from 'react';
 import MyPage from './Components/MyPage';
 import ListGroups from './Components/ListGroups';
+import NavbarComp from './Components/NavbarComp';
 
 function App({ items, setItems, filterItems, filterList }) {
 
@@ -17,7 +19,8 @@ function App({ items, setItems, filterItems, filterList }) {
   console.log('İtems', items)
 
   return (
-
+   <div>
+    <NavbarComp/>
     <Container fluid>
       <Row>
         <Col className='col-3 card-column h-100'>
@@ -42,7 +45,7 @@ function App({ items, setItems, filterItems, filterList }) {
 
       </Row>
     </Container>
-
+</div>
 
   );
 }
