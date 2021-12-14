@@ -7,6 +7,7 @@ import { GETALLITEMS, filteredList } from '../redux/actions/action';
 function ListGroups({ filterItems }) {
     const onClick = (type) => {
         filterItems(type)
+        console.log(type);
     }
     return (
         <div>

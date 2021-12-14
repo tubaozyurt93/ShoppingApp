@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 import MyPage from './Components/MyPage';
 import ListGroups from './Components/ListGroups';
 
-const baseURL = "https://fakestoreapi.com/products";
 function App({ items, setItems, filterItems, filterList }) {
 
   useEffect(() => {
