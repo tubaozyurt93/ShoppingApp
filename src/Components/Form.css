@@ -1,0 +1,16 @@
+input{
+    display: block;
+    border: 1px solid gray ;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom:10px;
+    padding:10px;
+}
+
+button{
+    padding: 5px 10px;
+    border: 1px solid rgb(35, 74, 245);
+    color:white;
+    background-color: rgb(35, 74, 245);
+    border-radius: 3px;
+}
