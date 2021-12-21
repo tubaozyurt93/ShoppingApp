@@ -6,6 +6,7 @@ import {Provider} from 'react-redux'
 import { store, persistor } from './redux/store/store'
 import {PersistGate} from 'redux-persist/es/integration/react'
 import reportWebVitals from './reportWebVitals';
+import './i18n';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { GETALLITEMS, filteredList } from './redux/actions/action';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Card, Button, CardGroup, Container, Row, Col, Link, ListGroup, Navbar } from 'react-bootstrap';
+import {  CardGroup, Container, Row, Col } from 'react-bootstrap';
 import { useEffect } from 'react';
 import MyPage from './Components/MyPage';
 import ListGroups from './Components/ListGroups';

@@ -1,10 +1,15 @@
-import React from 'react';
-import { useState } from 'react';
+import React , { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Form, Button, Container, Modal } from 'react-bootstrap';
+import { withTranslation } from 'react-i18next';
+// Components
 import Register from './Register';
 import LogIn from './LogIn';
-function NavbarComp() {
 
+function NavbarComp({t, i18n}) {
+
+    const handleChangeLanguage = (lang) => {
+        i18n.changeLanguage(lang);
+    }
     const [registerShow, setRegisterShow] = useState(false);
     const [loginShow, setLoginShow] = useState(false);
 
@@ -12,7 +17,7 @@ function NavbarComp() {
         <div>
             <Navbar style={{ marginBottom: "10px" }} bg="dark" variant='dark' expand="lg">
                 <Container fluid>
-                    <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                    <Navbar.Brand href="#">Logo</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -20,22 +25,26 @@ function NavbarComp() {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <NavDropdown title="Men's Clothing" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">T-Shirts</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">Jacket</NavDropdown.Item>
-                                <NavDropdown.Item href="#action5">Bag</NavDropdown.Item>
+                            <NavDropdown title={t('navbar.dropdown.headers.mensclothings')} id="navbarScrollingDropdown">
+                                <NavDropdown.Item href="#action3">{t('navbar.dropdown.sections.tshirt')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action4">{t('navbar.dropdown.sections.jacket')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action5">{t('navbar.dropdown.sections.bag')}</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Women's Clothing" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">T-Shirts</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">Jacket</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">Jewelery</NavDropdown.Item>
-                                <NavDropdown.Item href="#action5">Bag</NavDropdown.Item>
+                            <NavDropdown title={t('navbar.dropdown.headers.womensclothings')} id="navbarScrollingDropdown">
+                                <NavDropdown.Item href="#action3">{t('navbar.dropdown.sections.tshirt')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action4">{t('navbar.dropdown.sections.jacket')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action4">{t('navbar.dropdown.sections.jewelery')}</NavDropdown.Item>
+                                <NavDropdown.Item href="#action5">{t('navbar.dropdown.sections.bag')}</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href="#action1">Electronics</Nav.Link>
+                            <Nav.Link href="#action1">{t('navbar.dropdown.headers.electronics')}</Nav.Link>
                         </Nav>
+                            <NavDropdown title={t('navbar.dropdown.headers.language')} id="navbarScrollingDropdown">
+                                <NavDropdown.Item href="#turkish" onClick={()=> {handleChangeLanguage("tr")} }> Türkçe</NavDropdown.Item>
+                                <NavDropdown.Item href="#english" onClick={()=> {handleChangeLanguage("en")}}>English</NavDropdown.Item>
+                            </NavDropdown>
                         <Form className="d-flex">
-                            <Button style={{ marginRight: "20px" }} bg="light" onClick={() => setRegisterShow(true)} variant="outline-light">Register</Button>
-                            <Button style={{ marginRight: "20px" }} bg="light" onClick={() => setLoginShow(true)} variant="outline-light">Log In</Button>
+                            <Button style={{ marginRight: "20px" }} bg="light" onClick={() => setRegisterShow(true)} variant="outline-light">{t('navbar.buttons.register')}</Button>
+                            <Button style={{ marginRight: "20px" }} bg="light" onClick={() => setLoginShow(true)} variant="outline-light">{t('navbar.buttons.login')}</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>
@@ -48,7 +57,7 @@ function NavbarComp() {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-modal-sizes-title-lg">
-                        Register
+                    {t('navbar.buttons.register')}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body><Register /></Modal.Body>
@@ -61,7 +70,7 @@ function NavbarComp() {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-modal-sizes-title-lg">
-                        Log In
+                    {t('navbar.buttons.login')}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body><LogIn/></Modal.Body>
@@ -69,5 +78,4 @@ function NavbarComp() {
         </div>
     )
 }
-
-export default NavbarComp;
+export default withTranslation()(NavbarComp);

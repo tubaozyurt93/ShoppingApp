@@ -1,10 +1,11 @@
 
 import { React, useState } from "react";
+import { withTranslation } from 'react-i18next';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
 import './Form.css';
 
-function Register() {
+function Register({t}) {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
@@ -29,20 +30,20 @@ function Register() {
 
     return(
       <div className='Register'>
-        <div>
-                <h3>Register</h3>
-                <input placeholder="email"  onChange={(event) => { setRegisterEmail(event.target.value); }} />
-                <input placeholder="password"  onChange={(event) => { setRegisterPassword(event.target.value); }} />
-                <button  onClick={register}>Create User</button>
-            </div>
             <div>
-                <h4> User Logged In: </h4>
+                <input placeholder={t('register.placeholders.email')}  onChange={(event) => { setRegisterEmail(event.target.value); }} />
+                <input placeholder={t('register.placeholders.password')}  onChange={(event) => { setRegisterPassword(event.target.value); }} />
+                <button  onClick={register}>{t('register.buttons.createUser')}</button>
+            </div>
+            
+            <div>
+                <h4> {t('register.user')} </h4>
                 {user?.email}
-                <button onClick={logout}>Sign Out</button>
+                <button onClick={logout}>{t('register.buttons.signOut')}</button>
             </div>
       </div>
              
     )
 }
 
-export default Register;
+export default withTranslation()(Register);
